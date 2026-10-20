@@ -1,0 +1,451 @@
+/* --- THEMING & GLOBAL --- */
+:root {
+  --bg-color: #f0f2f5;
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --primary-blue: #007bff;
+  --modal-bg: #ffffff;
+  --hover-bg: #f5f5f5;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+  --primary-blue: #3b82f6;
+  --modal-bg: #2d2d2d;
+  --hover-bg: #333333;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- WIDER LAYOUT --- */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 40px;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 30px;
+}
+
+.navbar h1 {
+  margin: 0;
+  color: var(--primary-blue);
+  font-size: 28px;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-buttons button {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background 0.2s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-buttons button:hover {
+  background: var(--hover-bg);
+}
+
+/* --- LOGOUT BUTTON (FIXED) --- */
+.logout-btn {
+  background: transparent !important;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 0 20px;
+  border-radius: 25px !important;
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
+  width: auto !important;
+  height: 45px;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background: var(--hover-bg) !important;
+}
+
+/* --- DASHBOARD --- */
+.dashboard-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 30px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.dashboard-text h2 {
+  margin: 0 0 8px 0;
+  font-size: 26px;
+}
+
+.dashboard-text p {
+  margin: 0;
+  color: #888;
+  font-size: 16px;
+}
+
+/* --- PROGRESS CIRCLE --- */
+.progress-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+  background: conic-gradient(var(--primary-blue) var(--progress), var(--border-color) 0);
+}
+
+.progress-circle::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: var(--card-bg);
+  border-radius: 50%;
+}
+
+.progress-circle span {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- CALENDAR --- */
+.calendar-strip {
+  display: flex;
+  justify-content: space-between;
+  background: var(--card-bg);
+  padding: 15px 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.day-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 25px;
+  border-radius: 10px;
+  color: #888;
+  transition: all 0.2s;
+}
+
+.day-box.active {
+  background: var(--primary-blue);
+  color: white;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+.day-box .day-name {
+  font-size: 13px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.day-box .day-number {
+  font-size: 20px;
+}
+
+/* --- HABIT LIST --- */
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.habit-card {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border-left: 10px solid var(--habit-color, #007bff);
+  transition: transform 0.2s;
+}
+
+.habit-card:hover {
+  transform: translateX(5px);
+}
+
+.habit-info {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.habit-emoji {
+  font-size: 28px;
+}
+
+.habit-name {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.habit-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+}
+
+.habit-controls button {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.habit-controls button:hover {
+  background: var(--hover-bg);
+}
+
+/* --- LOGIN PAGE --- */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg-color);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-card {
+  background: var(--card-bg);
+  padding: 40px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.login-card h1 {
+  margin-top: 0;
+  color: var(--primary-blue);
+  font-size: 24px;
+}
+
+.login-card p {
+  color: #888;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.login-card .form-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.toggle-auth {
+  margin-top: 20px;
+  cursor: pointer;
+  color: var(--primary-blue);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.toggle-auth:hover {
+  text-decoration: underline;
+}
+
+.auth-message {
+  margin-top: 15px;
+  color: #ff6b6b;
+  font-size: 14px;
+}
+
+/* --- MODAL (POPUP) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: var(--modal-bg);
+  padding: 40px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 24px;
+}
+
+.modal-content p {
+  text-align: center;
+  color: #888;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.color-picker, .emoji-picker {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.color-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: transform 0.1s;
+}
+
+.color-circle:hover {
+  transform: scale(1.1);
+}
+
+.color-circle.selected {
+  border-color: var(--text-color);
+  transform: scale(1.1);
+}
+
+.emoji-btn {
+  font-size: 26px;
+  background: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 8px;
+  transition: all 0.2s;
+}
+
+.emoji-btn:hover {
+  background: var(--hover-bg);
+}
+
+.emoji-btn.selected {
+  border-color: var(--primary-blue);
+  background: var(--hover-bg);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.modal-actions button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-cancel {
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn-cancel:hover {
+  background: var(--hover-bg);
+}
+
+.btn-create {
+  background: var(--primary-blue);
+  color: white;
+}
+
+.btn-create:hover {
+  opacity: 0.9;
+}
